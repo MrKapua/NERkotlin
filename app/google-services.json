@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "167538169147",
+    "firebase_url": "https://neroom-57764.firebaseio.com",
+    "project_id": "neroom-57764",
+    "storage_bucket": "neroom-57764.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167538169147:android:e2b478a1167e2eff9f931e",
+        "android_client_info": {
+          "package_name": "com.kapuaStudio.ner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167538169147-gdsi2fqsp7k5is3rm32c82q7ktkhsbpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kapuaStudio.ner",
+            "certificate_hash": "1a9400b8b8a61a83bee76e17d50e9de1f0a4738e"
+          }
+        },
+        {
+          "client_id": "167538169147-s7ht1a2qhjv5ige3domsnetfe6vr8f7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd-2LrKpD78AIYQdZzF2IajSesAwmhkrw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167538169147-s7ht1a2qhjv5ige3domsnetfe6vr8f7j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "167538169147-ppqvupuqfpusee1iea5g2ck37vq0de35.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kapuastudio.NERiOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
