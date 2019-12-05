@@ -8,19 +8,7 @@
     tools:context=".Registro">
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
-    <EditText
-        android:id="@+id/reg_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
 
     <TextView
         android:id="@+id/textView4"

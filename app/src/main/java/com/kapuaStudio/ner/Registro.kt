@@ -37,11 +37,9 @@ class Registro : AppCompatActivity()
 
     private fun registrar()
     {
-        val txtnombre = findViewById<TextView>(R.id.reg_nombre)
         val txtmail = findViewById<TextView>(R.id.reg_email)
         val txtpass = findViewById<TextView>(R.id.reg_pass)
 
-        var nombre = txtnombre.text.toString()
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
 
