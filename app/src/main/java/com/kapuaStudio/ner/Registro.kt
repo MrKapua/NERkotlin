@@ -50,7 +50,9 @@ class Registro : AppCompatActivity()
                     if (task.isSuccessful)
                     {
                         val user = auth.currentUser
-                        startActivity(Intent(this, MainMenu::class.java ))
+                        val intent:Intent= Intent(this, Login::class.java)
+                        intent.putExtra("dirEmail", mail)
+                        startActivity(intent)
                         finish()
                     }
                     else
