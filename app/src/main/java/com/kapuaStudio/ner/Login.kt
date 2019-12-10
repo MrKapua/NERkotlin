@@ -76,6 +76,33 @@ class Login : AppCompatActivity()
         //leemos el contenido de los dos textViews necesarios para el Login
         var email=tv_email.text.toString()
         var pass = tv_pass.text.toString()
+        if( !email.isEmpty() && !pass.isEmpty())
+        {
+            auth.signInWithEmailAndPassword(email,pass)
+                .addOnCompleteListener(this)
+                {
+                    task ->
+                    if(task.isSuccessful)
+                    {
+                        Toast.makeText(this, "Todo correcto",Toast.LENGTH_SHORT).show()
+                        comprobarUID()
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Autenticación incorrecta",Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+        else
+        {
+            Toast.makeText(this,"rellena todos los campos", Toast.LENGTH_LONG).show()
+        }
+
+    }
+    fun comprobarUID()
+    {
+        var user = auth.currentUser
+        Toast.makeText(this, "uid: "+user?.uid, Toast.LENGTH_LONG).show()
 
     }
 }
