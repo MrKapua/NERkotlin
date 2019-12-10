@@ -12,8 +12,8 @@ class DatosPlus : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_datos_plus)
 
-        val btn_aceptar = findViewById<Button>(id.R.btn_datoPlusNickOK)
-        val btn_cancelar = findViewById<Button>(id.R.btn_datoPlusNickCancel)
+        val btn_aceptar = findViewById<Button>(R.id.btn_datoPlusNickOK)
+        val btn_cancelar = findViewById<Button>(R.id.btn_datoPlusNickCancel)
 
         btn_aceptar.setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)
