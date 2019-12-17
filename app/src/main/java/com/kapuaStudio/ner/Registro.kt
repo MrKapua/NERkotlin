@@ -1,31 +1,28 @@
 package com.kapuaStudio.ner
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.kapuaStudio.ner.data.User
 
 
 class Registro : AppCompatActivity()
 {
     //preparamos variables para rellenar más adelante
     private lateinit var auth: FirebaseAuth
-    private lateinit var  mDataBase : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
         //tenemos la instancia de AUTH de firebase
         auth=FirebaseAuth.getInstance()
+
         //si pulsamos sobre registro
         val btnRegistro = findViewById<View>(R.id.btnRegistro) as Button
         btnRegistro.setOnClickListener{
@@ -46,12 +43,14 @@ class Registro : AppCompatActivity()
         {
             auth.createUserWithEmailAndPassword(mail, pass)
                 .addOnCompleteListener { task ->
-                if (task.isSuccessful)// si es correcta la comprobación volvemos a la activity
-                    //anterior pasanto la direción de mail por el intent
+                if (task.isSuccessful)// si es correcta la comprobación volvemos a la activity anterior pasanto la direción de mail por el intent
                 {
                     val user = auth.currentUser
+                    val usuario = User("jose")
+                    registrarNombre(user?.uid.toString())
                     val intent:Intent= Intent(this, Login::class.java)
                     intent.putExtra("dirEmail", mail)
+
                     startActivity(intent)//lanzamos el intent
                     finish() // y cerramos este
                 }
@@ -62,5 +61,22 @@ class Registro : AppCompatActivity()
             }
         }
 
+    }
+
+    private fun registrarNombre(uid :String)
+    {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("usuario")
+        val usuario = User("jose", "Jimene", "MrKapua")
+        myRef.child(uid).setValue(usuario)
+        /*
+
+        val ref = FirebaseDatabase.getInstance().getReference("usuario")
+
+        ref.setValue(usuario).addOnCompleteListener {
+            Toast.makeText(this, "¿saldrá?",Toast.LENGTH_SHORT).show()
+        }
+
+         */
     }
 }

@@ -1,24 +1,33 @@
 package com.kapuaStudio.ner
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.kapuaStudio.ner.data.User
+import java.util.prefs.PreferencesFactory
+
 
 class Login : AppCompatActivity()
 {
-    private lateinit var auth : FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var usuarioRef : FirebaseDatabase
+    private lateinit var logUid : String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         //inicializamos Firebase Auth
-        auth = FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
         var tv_email = findViewById<TextView>(R.id.txt_mail)
         var btnMainMenu = findViewById<Button>(R.id.btn_log)
         var btnRegistrar=findViewById<Button>(R.id.registrar_log)
@@ -32,15 +41,26 @@ class Login : AppCompatActivity()
         if(mail!=null)
         {
             tv_email.setText(""+mail)
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("usuario")
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    val value = dataSnapshot.getValue(User::class.java)
+                    Log.d("TAG", "Value is: $value")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("TAG", "Failed to read value.", error.toException())
+                }
+            })
             Toast.makeText(this, "El registro ha concluido correctamente, ya puedes iniciar sesión",Toast.LENGTH_SHORT).show()
         }
-        //Si se pulsa sobre el boton de Login esta función nos mandará a la comprobación de Firebase
-        // para conceder el acceso
         btnMainMenu.setOnClickListener ( View.OnClickListener {
                 view -> login()
         })
-        //Si pulsamos sobre el boton de registrar esta función nos mandará directamente a la activity
-        // de @registro.kt
         btnRegistrar.setOnClickListener{
                 startActivity(Intent(this,Registro::class.java))
             finish()
@@ -57,15 +77,17 @@ class Login : AppCompatActivity()
         //Comprobamos si los campos de mail y de pass están completos
         if( !email.isEmpty() && !pass.isEmpty())
         {
-            auth.signInWithEmailAndPassword(email,pass)
+            mAuth.signInWithEmailAndPassword(email,pass)
                 .addOnCompleteListener(this)
             {
                 task ->
                 if(task.isSuccessful)//Si el login es correcto
                 {
                     Toast.makeText(this, "Todo correcto",Toast.LENGTH_SHORT).show()
-                    //pasamos comprobar si tiene datos dentro de firebase
-                    comprobarUID()
+                    val i :Intent = Intent(this,MainMenu::class.java)
+                    i.putExtra("uid",mAuth.uid.toString())
+                    //guardarUid(logUid)
+                    startActivity(i)
                 }
                 else// si algo sale mal...
                 {
@@ -79,29 +101,13 @@ class Login : AppCompatActivity()
             Toast.makeText(this,"rellena todos los campos", Toast.LENGTH_LONG).show()
         }
     }
-    fun comprobarUID()
+    private fun guardarUid(uid : String)
     {
-        // obtenemos el usuario con el que se ha autenticado y obtenemos si UID, identificador unico
-        // dentro de la base de datos
-        var user = auth.currentUser
-        Toast.makeText(this, "uid: "+user?.uid, Toast.LENGTH_LONG).show()
-        // la instancia a la base de datos
-        var fbDase = FirebaseDatabase.getInstance()
-        // la referencia a la instancia anterior
-        var referencia = fbDase.getReference(user!!.uid)
-        //preparamos el intent para su posterior uso
-        var i:Intent;
-        // si no tenemos datos dentro de el campo nombre pasaremos al intent de datosPlus
-        if(referencia.child("nombre").toString().isEmpty())
-        {
-           i = Intent(this, DatosPlus::class.java)
-        }
-        // si no, entraremos en el menu principal con el usuario logueado
-        else
-        {
-            i = Intent(this, MainMenu::class.java)
-        }
-        //nos vamos a otra activity, vamos
-        startActivity(i)
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val editPref = prefs.edit()
+        editPref.putString(logUid, uid)
+        editPref.apply()
+
     }
 }
