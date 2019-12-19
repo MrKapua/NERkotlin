@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item>
-        <shape
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="rectangle">>
-            <gradient android:angle="135"
-                android:endColor="#fff"
-                android:startColor="#C6E0FF"
-                android:type="linear"
-                android:shape="oval"/>
-        </shape>
+        <rotate
+            android:fromDegrees="3"
+            android:pivotX="100%"
+            android:pivotY="85%"
+            >
+            <shape
+
+                android:shape="rectangle">
+                <solid android:color="#00F" />
+
+            </shape>
+        </rotate>
     </item>
 
 </selector>

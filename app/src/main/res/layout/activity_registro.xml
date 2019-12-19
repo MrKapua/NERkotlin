@@ -5,13 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".Registro">
 
-
-
-
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewNombreReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/diagonalStyle"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/reg_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical"
+        style="@style/diagonalStyle"
+        />
+    <TextView
+        android:id="@+id/textViewApellidoReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/reg_apellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+    <TextView
+        android:id="@+id/textViewProvinciaReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privincia" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/regProv"
+        />
+    <TextView
+        android:id="@+id/textViewMailReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
@@ -24,7 +63,7 @@
         android:inputType="textEmailAddress" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textPassReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />

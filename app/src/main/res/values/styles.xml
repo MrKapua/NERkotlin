@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+        <style name="diagonalStyle">
+            <item name="android:background">@drawable/degradado_base</item>
+        </style>
+
 </resources>
