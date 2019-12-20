@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.kapuaStudio.ner.data.User
+import kotlinx.android.synthetic.main.activity_registro.*
 
 
 class Registro : AppCompatActivity()
@@ -33,13 +35,18 @@ class Registro : AppCompatActivity()
     private fun registrar()
     {
         //Localizamos los EditText de la activity
-        val txtmail = findViewById<TextView>(R.id.reg_email)
-        val txtpass = findViewById<TextView>(R.id.reg_pass)
+        val txtmail = findViewById<EditText>(R.id.reg_email)
+        val txtpass = findViewById<EditText>(R.id.reg_pass)
+        val txtnom = findViewById<EditText>(R.id.reg_nombre)
+        var txtape = findViewById<EditText>(R.id.reg_apellido)
+        val txtprov = regProv.selectedItem.toString()
         //guardamos el contenido dentro de variables en el momento de pulsar el botón
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
+        var nomb = txtnom.text.toString()
+        var ape = txtape.text.toString()
         //comprobamos si ambos campos estan rellenos
-        if(!mail.isEmpty() && !pass.isEmpty())
+        if(!mail.isEmpty() && !pass.isEmpty() && !nomb.isEmpty() && !ape.isEmpty())
         {
             auth.createUserWithEmailAndPassword(mail, pass)
                 .addOnCompleteListener { task ->
@@ -47,7 +54,7 @@ class Registro : AppCompatActivity()
                 {
                     val user = auth.currentUser
                     val usuario = User("jose")
-                    registrarNombre(user?.uid.toString())
+                    registrarNombre(user?.uid.toString(), nomb,ape,txtprov)
                     val intent:Intent= Intent(this, Login::class.java)
                     intent.putExtra("dirEmail", mail)
 
@@ -63,11 +70,11 @@ class Registro : AppCompatActivity()
 
     }
 
-    private fun registrarNombre(uid :String)
+    private fun registrarNombre(uid :String, nombre: String, apellido:String, provincia : String)
     {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("usuario")
-        val usuario = User("jose", "Jimene", "MrKapua")
+        val usuario = User(nombre, apellido,provincia,uid)
         myRef.child(uid).setValue(usuario)
         /*
 
