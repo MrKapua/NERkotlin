@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -22,6 +24,7 @@ import android.content.Intent as Intent
 class NotificationsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var auth: FirebaseAuth
     private lateinit var not_nonmbre: TextView
     private  var logUid : String = ""
 
@@ -40,11 +43,16 @@ class NotificationsFragment : Fragment() {
 
         val login: Intent = Intent()
         var lUid = login.getStringExtra("uid")
+        auth=FirebaseAuth.getInstance()
+        lUid= auth.uid.toString()
+        Log.e("hola","el uid es "+ lUid )
+
+
 
 
         //var logUid : String = recuperarUid()
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("usuario").child("4swR3uh5bZOwP20yu6Op03gsMoh2")
+        val myRef = database.getReference("usuario").child(lUid)
             myRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again

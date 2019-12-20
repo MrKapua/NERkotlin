@@ -39,7 +39,8 @@ class Registro : AppCompatActivity()
         val txtpass = findViewById<EditText>(R.id.reg_pass)
         val txtnom = findViewById<EditText>(R.id.reg_nombre)
         var txtape = findViewById<EditText>(R.id.reg_apellido)
-        val txtprov = regProv.selectedItem.toString()
+        //val txtprov = regProv.selectedItem.toString()//procisional
+        val txtprov = "Cáceres"
         //guardamos el contenido dentro de variables en el momento de pulsar el botón
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
