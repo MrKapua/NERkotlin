@@ -1,6 +1,6 @@
 package com.kapuaStudio.ner.data
 
-class User (
+class Users (
     val nombre: String ="",
     val apellido: String="",
     val provincia: String="",

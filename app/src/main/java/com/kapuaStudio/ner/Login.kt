@@ -1,7 +1,6 @@
 package com.kapuaStudio.ner
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -12,8 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.kapuaStudio.ner.data.User
-import java.util.prefs.PreferencesFactory
+import com.kapuaStudio.ner.data.Users
 
 
 class Login : AppCompatActivity()
@@ -47,7 +45,7 @@ class Login : AppCompatActivity()
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    val value = dataSnapshot.getValue(User::class.java)
+                    val value = dataSnapshot.getValue(Users::class.java)
                     Log.d("TAG", "Value is: $value")
                 }
 
@@ -84,10 +82,8 @@ class Login : AppCompatActivity()
                 if(task.isSuccessful)//Si el login es correcto
                 {
                     Toast.makeText(this, "Todo correcto",Toast.LENGTH_SHORT).show()
-                    val i :Intent = Intent(this,MainMenu::class.java)
-                    i.putExtra("uid",mAuth.uid.toString())
-                    //guardarUid(logUid)
-                    startActivity(i)
+                    val k : Intent = Intent(this, MenuPrincipal::class.java)
+                    startActivity(k)
                 }
                 else// si algo sale mal...
                 {

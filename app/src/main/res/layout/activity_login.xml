@@ -42,11 +42,12 @@
                 android:id="@+id/txt_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/ic_action_user"
+                android:hint="usuario"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/colorPrimario1"
                 android:textColorHint="@color/colorPrimario1Palido"
-                android:drawableLeft="@drawable/ic_action_user"
-                android:hint="usuario" />
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -65,11 +66,12 @@
                 android:id="@+id/txt_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_pass"
+                android:hint="contraseña"
                 android:inputType="textPassword"
                 android:textColor="@color/colorPrimario1"
-                android:drawableLeft="@drawable/ic_action_pass"
                 android:textColorHint="@color/colorPrimario1Palido"
-                android:hint="contraseña" />
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"

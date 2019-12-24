@@ -4,14 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.kapuaStudio.ner.data.User
-import kotlinx.android.synthetic.main.activity_registro.*
+import com.kapuaStudio.ner.data.Users
 
 
 class Registro : AppCompatActivity()
@@ -24,14 +20,15 @@ class Registro : AppCompatActivity()
         setContentView(R.layout.activity_registro)
         //tenemos la instancia de AUTH de firebase
         auth=FirebaseAuth.getInstance()
-
+        //Esto nos va a hacer falta
+        //val spinnerAdapter = ArrayAdapter.createFromResource(this, provincias,R.layout.support_simple_spinner_dropdown_item)
+        //spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         //si pulsamos sobre registro
         val btnRegistro = findViewById<View>(R.id.btnRegistro) as Button
         btnRegistro.setOnClickListener{
             registrar()
         }
     }
-
     private fun registrar()
     {
         //Localizamos los EditText de la activity
@@ -40,7 +37,7 @@ class Registro : AppCompatActivity()
         val txtnom = findViewById<EditText>(R.id.reg_nombre)
         var txtape = findViewById<EditText>(R.id.reg_apellido)
         //val txtprov = regProv.selectedItem.toString()//procisional
-        val txtprov = "Cáceres"
+        val txtprov = "Cáceres"//por ahora somos todos de Cáceres
         //guardamos el contenido dentro de variables en el momento de pulsar el botón
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
@@ -54,11 +51,10 @@ class Registro : AppCompatActivity()
                 if (task.isSuccessful)// si es correcta la comprobación volvemos a la activity anterior pasanto la direción de mail por el intent
                 {
                     val user = auth.currentUser
-                    val usuario = User("jose")
+                    val usuario = Users("jose")
                     registrarNombre(user?.uid.toString(), nomb,ape,txtprov)
                     val intent:Intent= Intent(this, Login::class.java)
-                    intent.putExtra("dirEmail", mail)
-
+                    intent.putExtra("dirEmail", mail)//pasamos el correo nuevo a la pantalla de Login
                     startActivity(intent)//lanzamos el intent
                     finish() // y cerramos este
                 }
@@ -68,23 +64,13 @@ class Registro : AppCompatActivity()
                 }
             }
         }
-
     }
-
     private fun registrarNombre(uid :String, nombre: String, apellido:String, provincia : String)
     {
+        //vamos a crear el registro nuevo
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("usuario")
-        val usuario = User(nombre, apellido,provincia,uid)
+        val usuario = Users(nombre, apellido,provincia,uid)
         myRef.child(uid).setValue(usuario)
-        /*
-
-        val ref = FirebaseDatabase.getInstance().getReference("usuario")
-
-        ref.setValue(usuario).addOnCompleteListener {
-            Toast.makeText(this, "¿saldrá?",Toast.LENGTH_SHORT).show()
-        }
-
-         */
     }
 }

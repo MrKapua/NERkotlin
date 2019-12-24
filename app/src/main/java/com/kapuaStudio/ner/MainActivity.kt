@@ -12,10 +12,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var boton : Button =findViewById(R.id.botonIr)
+        var boton2 : Button =findViewById(R.id.botonListaEmpresas)
 
         boton.setOnClickListener {
             val salto = Intent(this, Login::class.java)
             startActivity(salto)
+        }
+        boton2.setOnClickListener {
+            val saltoEmpresas = Intent(this, Empresas::class.java)
+            startActivity(saltoEmpresas)
         }
     }
 }
