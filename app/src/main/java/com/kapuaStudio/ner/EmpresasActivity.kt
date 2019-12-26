@@ -1,13 +1,10 @@
 package com.kapuaStudio.ner
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -16,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.kapuaStudio.ner.data.Empresas
 import kotlinx.android.synthetic.main.lo_empresas.view.*
 
-class Empresas : AppCompatActivity()
+class EmpresasActivity : AppCompatActivity()
 {
     lateinit var mRecyclerView : RecyclerView
     lateinit var mDataBase : DatabaseReference
@@ -28,15 +25,12 @@ class Empresas : AppCompatActivity()
         mRecyclerView = findViewById(R.id.listempresalist)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.setLayoutManager(LinearLayoutManager(this))
-
-
-
-        logRecyvlerView()
+        rellenarEmpresas()
     }
-
-    private fun logRecyvlerView()
+    private fun rellenarEmpresas()
     {
-        var  FirebaseRecyclerAdapter = object : FirebaseRecyclerAdapter<Empresas, EmpresaViewHolder>(Empresas::class.java, R.layout.lo_empresas, EmpresaViewHolder::class.java, mDataBase)
+        var FirebaseRecyclerAdapter = object : FirebaseRecyclerAdapter<Empresas, EmpresaViewHolder>
+            (Empresas::class.java, R.layout.lo_empresas, EmpresaViewHolder::class.java, mDataBase)
         {
             override fun populateViewHolder(viewHolder: EmpresaViewHolder?, model: Empresas?, position: Int)
             {
@@ -53,14 +47,10 @@ class Empresas : AppCompatActivity()
         init {
             itemView.setOnClickListener{
                 Log.e("hola", "he tocado algo "+ itemView.nom_empresa.text )
-                val intent = Intent ( itemView.context, Usuario::class.java)
+                val intent = Intent ( itemView.context, SalasActivity::class.java)
+                intent.putExtra("nomEmpresa",itemView.nom_empresa.text)
                 itemView.context.startActivity(intent)
-
-
                 }
-
-        }
-
-
+            }
     }
 }

@@ -42,6 +42,7 @@ class Usuario : AppCompatActivity()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                var padre: String? = dataSnapshot.key
                 val value = dataSnapshot.getValue(Users::class.java)
                 Log.d("TAG", "Value is: $value")
                 if (value != null) {

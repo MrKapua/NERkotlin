@@ -31,13 +31,13 @@ class MenuPrincipal : AppCompatActivity() {
 
 
         //vamos a ver que pasa si pulsas un cardView
-        card_test.setOnClickListener { startActivity(Intent(this,Empresas::class.java)) }
+        card_test.setOnClickListener { startActivity(Intent(this,EmpresasActivity::class.java)) }
 
 
 
         //los botones van haciendo cosas
         btn_empresas.setOnClickListener{
-            startActivity(Intent(this,Empresas::class.java))
+            startActivity(Intent(this,EmpresasActivity::class.java))
         }
 
         btn_usuario.setOnClickListener{

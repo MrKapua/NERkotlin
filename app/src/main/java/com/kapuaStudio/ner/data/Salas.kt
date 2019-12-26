@@ -1,19 +1,27 @@
 package com.kapuaStudio.ner.data
 
-class Salas {
-    var nombre: String? = null
-    var jugadores: String? = null
-    var tematica: String? = null
+class Salas
+{
+    var empresa : String? = null
+    var nombre : String? = null
+    var jugadores : String? = null
+    var tematica : String? = null
+    var precio : String? = null
+    var tiempo : String? = null
+    var tipo : String? = null
+    var reserva : String? = null
 
     constructor()
     {}
-
-    constructor(nombre: String?, jugadores: String?, tematica: String?)
+    constructor(empresa: String?, nombre: String?, jugadores: String?, tematica: String?, precio: String?, tiempo: String?, tipo: String?, reserva: String?)
     {
+        this.empresa = empresa
         this.nombre = nombre
         this.jugadores = jugadores
         this.tematica = tematica
+        this.precio = precio
+        this.tiempo = tiempo
+        this.tipo = tipo
+        this.reserva = reserva
     }
-
-
 }
