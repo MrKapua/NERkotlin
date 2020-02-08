@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrayCiudadesPrincipales">
+        <item>MADRID</item>
+        <item>BARCELONA</item>
+        <item>SEVILLA</item>
+        <item>ZARAGOZA</item>
+        <item>MÁLAGA</item>
+        <item>BILBAO</item>
+        <item>ALICANTE</item>
+        <item>CÓRDOBA</item>
+        <item>VALLADOLID</item>
+    </string-array>
+</resources>
