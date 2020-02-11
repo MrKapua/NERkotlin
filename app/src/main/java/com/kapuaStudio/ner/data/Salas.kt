@@ -10,10 +10,11 @@ class Salas
     var tiempo : String? = null
     var tipo : String? = null
     var reserva : String? = null
+    var uid: String? = null
 
     constructor()
     {}
-    constructor(empresa: String?, nombre: String?, jugadores: String?, tematica: String?, precio: String?, tiempo: String?, tipo: String?, reserva: String?)
+    constructor(empresa: String?, nombre: String?, jugadores: String?, tematica: String?, precio: String?, tiempo: String?, tipo: String?, reserva: String?, uid: String)
     {
         this.empresa = empresa
         this.nombre = nombre
@@ -23,5 +24,6 @@ class Salas
         this.tiempo = tiempo
         this.tipo = tipo
         this.reserva = reserva
+        this.uid = uid
     }
 }

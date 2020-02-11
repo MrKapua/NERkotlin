@@ -3,6 +3,7 @@ package com.kapuaStudio.ner
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
@@ -15,14 +16,32 @@ class Registro : AppCompatActivity()
     //preparamos variables para rellenar más adelante
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var provincia: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
         //tenemos la instancia de AUTH de firebase
         auth=FirebaseAuth.getInstance()
         //Esto nos va a hacer falta
-        //val spinnerAdapter = ArrayAdapter.createFromResource(this, provincias,R.layout.support_simple_spinner_dropdown_item)
-        //spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        var spinner: Spinner = findViewById(R.id.regProv)
+         provincia ="A Coruña"
+        var provincias = resources.getStringArray(R.array.provincias)
+
+        var adapter=ArrayAdapter.createFromResource(this, R.array.provincias, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?){}
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
+                Log.e("hola", provincias[position])
+                provincia= provincias[position]
+            }
+        }
+
         //si pulsamos sobre registro
         val btnRegistro = findViewById<View>(R.id.btnRegistro) as Button
         btnRegistro.setOnClickListener{
@@ -37,7 +56,7 @@ class Registro : AppCompatActivity()
         val txtnom = findViewById<EditText>(R.id.reg_nombre)
         var txtape = findViewById<EditText>(R.id.reg_apellido)
         //val txtprov = regProv.selectedItem.toString()//procisional
-        val txtprov = "Cáceres"//por ahora somos todos de Cáceres
+        val txtprov = provincia//por ahora somos todos de Cáceres
         //guardamos el contenido dentro de variables en el momento de pulsar el botón
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
@@ -51,8 +70,7 @@ class Registro : AppCompatActivity()
                 if (task.isSuccessful)// si es correcta la comprobación volvemos a la activity anterior pasanto la direción de mail por el intent
                 {
                     val user = auth.currentUser
-                    val usuario = Users("jose")
-                    registrarNombre(user?.uid.toString(), nomb,ape,txtprov)
+                    registrarNombre(user?.uid.toString(), nomb,ape,provincia)
                     val intent:Intent= Intent(this, Login::class.java)
                     intent.putExtra("dirEmail", mail)//pasamos el correo nuevo a la pantalla de Login
                     startActivity(intent)//lanzamos el intent
@@ -69,8 +87,8 @@ class Registro : AppCompatActivity()
     {
         //vamos a crear el registro nuevo
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("usuario")
-        val usuario = Users(nombre, apellido,provincia,uid)
-        myRef.child(uid).setValue(usuario)
+        val myRef = database.getReference("Usuario")
+        val Usuario = Users(nombre, apellido,provincia,uid)
+        myRef.child(uid).setValue(Usuario)
     }
 }

@@ -6,15 +6,17 @@ class Empresas
     var ciudad : String? = null
     var provincia : String? = null
     var telf : String? = null
+    var uid : String? = null
 
     constructor()
     {}
-    constructor(nombre: String?, ciudad:String?, provincia:String?, telf:String? )
+    constructor(nombre: String?, ciudad:String?, provincia:String?, telf:String?, uid:String? )
     {
         this.nombre = nombre
         this.ciudad = ciudad
         this.provincia = provincia
         this.telf = telf
+        this.uid = uid
     }
 
 }
