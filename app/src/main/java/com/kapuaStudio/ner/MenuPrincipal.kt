@@ -13,32 +13,40 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kapuaStudio.ner.data.Users
+import kotlinx.android.synthetic.main.activity_menu_principal.*
 
 class MenuPrincipal : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userName : TextView
     private lateinit var lUid : String
+    private lateinit var database : FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        database = FirebaseDatabase.getInstance()
         setContentView(R.layout.activity_menu_principal)
 
         //declaramos los botones, por hacer algo
-        var btn_empresas= findViewById<Button>(R.id.btn_empresas_prin)
+        var btn_pincCiudades = findViewById<Button>(R.id.btn_empresas_prin)
+        var btn_radar= findViewById<Button>(R.id.btn_radar_prin)
         var btn_usuario = findViewById<Button>(R.id.btn_usuario_prin)
-        var card_test :CardView = findViewById(R.id.cardtest)
-
-
-        //vamos a ver que pasa si pulsas un cardView
-        card_test.setOnClickListener { startActivity(Intent(this,Empresas::class.java)) }
-
-
+        var btn_buscar: Button = findViewById(R.id.btn_buscar_prin)
 
         //los botones van haciendo cosas
-        btn_empresas.setOnClickListener{
-            startActivity(Intent(this,Empresas::class.java))
+        btn_pincCiudades.setOnClickListener{
+            startActivity(Intent(this,PrincipalesCiudades::class.java))
         }
+
+        btn_buscar.setOnClickListener {
+            //startActivity(Intent(this, PrincipalesCiudades::class.java))
+            startActivity(Intent(this, Busqueda::class.java))
+        }
+        btn_radar.setOnClickListener {
+            //startActivity(Intent(this, PrincipalesCiudades::class.java))
+            startActivity(Intent(this, Radar::class.java))
+        }
+
 
         btn_usuario.setOnClickListener{
             startActivity(Intent(this,Usuario::class.java))
@@ -54,7 +62,7 @@ class MenuPrincipal : AppCompatActivity() {
 
     private fun rellenarUsuario()
     {
-        val database = FirebaseDatabase.getInstance()
+
         val myRef = database.getReference("usuario").child(lUid)
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -64,6 +72,11 @@ class MenuPrincipal : AppCompatActivity() {
                 Log.d("TAG", "Value is: $value")
                 if (value != null) {
                     userName.text=value.nombre.toString()
+                    princNombreUser.text= "hola "+userName
+                }
+                else
+                {
+                    princNombreUser.text="¿Quién eres y qué haces aquí?"
                 }
             }
 

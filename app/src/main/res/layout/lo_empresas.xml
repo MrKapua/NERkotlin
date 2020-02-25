@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="10dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="25dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        app:cardCornerRadius="10dp"
+        android:paddingTop="10dp"
 
+        android:paddingBottom="20dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="20dp"
         app:cardPreventCornerOverlap="true">
 
@@ -73,13 +77,14 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/num_telf"
+                    android:id="@+id/num_uid"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="x"
-                    android:textColor="@color/colorPrimario1"
-                    android:textSize="18sp" />
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textSize="18sp"
+                    tools:visibility="invisible" />
             </LinearLayout>
 
 

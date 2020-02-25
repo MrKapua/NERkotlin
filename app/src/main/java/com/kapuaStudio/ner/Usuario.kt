@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kapuaStudio.ner.data.Users
+import kotlinx.android.synthetic.main.activity_usuario.*
 
 class Usuario : AppCompatActivity()
 {
@@ -35,25 +36,28 @@ class Usuario : AppCompatActivity()
 
     }
 
-    private fun rellenarDatos() {
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("usuario").child(lUid)
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(Users::class.java)
-                Log.d("TAG", "Value is: $value")
-                if (value != null) {
-                    nombre_tv.setText(value.nombre.toString())
-                }
-            }
+    private fun rellenarDatos()
+    {
+        val keyUid = FirebaseAuth.getInstance().currentUser!!.uid
+        val refMaestra = FirebaseDatabase.getInstance().reference
+        val refUid =  refMaestra.child("Usuario").child(keyUid)
 
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("TAG", "Failed to read value.", error.toException())
+        val valueEventListener = object  :ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(Users::class.java)
+                //Log.e("hola", "hola soy...." + user!!.nombre)
+                tv_nombre_usu.text=user!!.nombre
+                tv_apellido_usu.text=user!!.apellido
+                tv_mail_usu.text=user!!.uid
+                tv_provincia_usu.text=user!!.provincia
+
             }
-        })
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        }
+        refUid.addListenerForSingleValueEvent(valueEventListener)
+
     }
 
 

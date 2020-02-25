@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,11 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Usuario"></activity>
+        <activity android:name=".RadarActivity"></activity>
+        <activity android:name=".Busqueda" />
+        <activity android:name=".PrincipalesCiudades" />
+        <activity android:name=".Radar" />
+        <activity android:name=".SalaDetalle" />
+        <activity android:name=".EmpresaDetalle" />
+        <activity android:name=".SalasActivity" />
+        <activity android:name=".Usuario" />
         <activity
             android:name=".MenuPrincipal"
             android:label="@string/title_activity_menu_principal" />
-        <activity android:name=".Empresas" />
+        <activity android:name=".EmpresasActivity" />
         <activity android:name=".DatosPlus" />
         <activity android:name=".Registro" />
         <activity
@@ -32,6 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAHEcrbJUJm0oylfPEFXoG6S_d56cCRbkk" />
     </application>
 
 </manifest>
