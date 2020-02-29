@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">NER</string>
+    <string name="app_name">NextEscapeRoom</string>
     <string name="title_activity_menu_principal">MenuPrincipal</string>
     <string name="title_notifications">Notifications</string>
 
 
     <string name="title_find">Buscar</string>
     <string name="title_radar">Radar</string>
-    <string name="title_home">NER</string>
+    <string name="title_home">NextEscapeRoom</string>
     <string name="title_personal">Personal</string>
     <string name="title_favourite">Favoritos</string>
     <string name="title_activity_main_menu">MainMenu</string>

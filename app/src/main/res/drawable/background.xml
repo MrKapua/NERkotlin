@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate
-        android:fromDegrees="45"
-        android:toDegrees="45"
-        android:pivotX="50%"
-        android:pivotY="50%" >
-        
-        </rotate>
-    </item>
-</selector>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"></selector>

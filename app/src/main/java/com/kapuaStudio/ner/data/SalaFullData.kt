@@ -7,5 +7,6 @@ class SalaFullData
     val precio: String? ="",
     val tematica: String? ="",
     val descripcion: String? ="",
-    val tipo: String? =""
+    val tipo: String? ="",
+    val reserva: String? =""
 )

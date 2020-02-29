@@ -11,6 +11,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.kapuaStudio.ner.data.Empresas
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.lo_empresas.*
 import kotlinx.android.synthetic.main.lo_empresas.view.*
 
 class EmpresasActivity : AppCompatActivity()
@@ -60,8 +62,11 @@ class EmpresasActivity : AppCompatActivity()
                 viewHolder!!.itemView.nom_empresa.setText(model!!.nombre)
                 viewHolder!!.itemView.ciudad_empresa.setText(model!!.ciudad)
                 viewHolder!!.itemView.provincia_empresa.setText(model!!.provincia)
-                viewHolder!!.itemView.num_telf_empresa.setText(model!!.telf)
+                viewHolder!!.itemView.num_telf_empresa.setText("Teléfono: "+ model!!.telf)
                 viewHolder!!.itemView.num_uid.setText(model!!.uid)
+                Picasso.get()
+                    .load(model!!.foto)
+                    .into(viewHolder!!.itemView.logoEmpresa)
             }
         }
         mRecyclerView.adapter = FirebaseRecyclerAdapter
@@ -78,6 +83,9 @@ class EmpresasActivity : AppCompatActivity()
                 viewHolder!!.itemView.provincia_empresa.setText(model!!.provincia)
                 viewHolder!!.itemView.num_telf_empresa.setText(model!!.telf)
                 viewHolder!!.itemView.num_uid.setText(model!!.uid)
+                Picasso.get()
+                    .load(model!!.foto)
+                    .into(viewHolder!!.itemView.logoEmpresa)
             }
         }
         mRecyclerView.adapter = FirebaseRecyclerAdapter
@@ -94,6 +102,9 @@ class EmpresasActivity : AppCompatActivity()
                 viewHolder!!.itemView.provincia_empresa.setText(model!!.provincia)
                 viewHolder!!.itemView.num_telf_empresa.setText(model!!.telf)
                 viewHolder!!.itemView.num_uid.setText(model!!.uid)
+                Picasso.get()
+                    .load(model!!.foto)
+                    .into(viewHolder!!.itemView.logoEmpresa)
             }
         }
         mRecyclerView.adapter = FirebaseRecyclerAdapter
@@ -118,11 +129,15 @@ class EmpresasActivity : AppCompatActivity()
         {
             override fun populateViewHolder(viewHolder: EmpresaViewHolder?, model: Empresas?, position: Int)
             {
+
                 viewHolder!!.itemView.nom_empresa.setText(model!!.nombre)
                 viewHolder!!.itemView.ciudad_empresa.setText(model!!.ciudad)
                 viewHolder!!.itemView.provincia_empresa.setText(model!!.provincia)
                 viewHolder!!.itemView.num_telf_empresa.setText(model!!.telf)
                 viewHolder!!.itemView.num_uid.setText(model!!.uid)
+                Picasso.get()
+                    .load(model!!.foto)
+                    .into(viewHolder!!.itemView.logoEmpresa)
             }
         }
         mRecyclerView.adapter = FirebaseRecyclerAdapter

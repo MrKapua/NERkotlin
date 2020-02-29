@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="15dp"
         android:weightSum="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -35,36 +37,73 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:text="TextView" />
+                android:gravity="center_vertical"
+                android:text="Hola"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimario1"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_empresas_prin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="8dp"
             android:layout_weight="2"
-            android:text="Principales Ciudades" />
+            android:background="@drawable/boton_redondeado"
+            android:gravity="bottom|left"
+            android:paddingLeft="10dp"
+            android:text="Principales Ciudades"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimario2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_buscar_prin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="8dp"
             android:layout_weight="2"
-            android:text="Buscar" />
+            android:background="@drawable/boton_redondeado"
+            android:gravity="bottom|left"
+            android:padding="15dp"
+            android:text="Buscar"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimario2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_radar_prin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="8dp"
             android:layout_weight="2"
-            android:text="@string/title_radar" />
+            android:background="@drawable/boton_redondeado"
+            android:gravity="bottom|left"
+            android:padding="15dp"
+            android:text="@string/title_radar"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimario2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_usuario_prin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="8dp"
             android:layout_weight="2"
-            android:text="Usuario" />
+            android:background="@drawable/boton_redondeado"
+            android:gravity="bottom|left"
+            android:padding="15dp"
+            android:text="Usuario"
+            android:textColor="@color/colorPrimario2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="viewStart" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

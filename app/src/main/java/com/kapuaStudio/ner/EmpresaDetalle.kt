@@ -84,12 +84,10 @@ class EmpresaDetalle : AppCompatActivity() ,OnMapReadyCallback
                 lbl_ciudad_direccion_detalle.setText(empresad?.direccion)
                 lbl_nom_empresa_detalle.setText(empresad?.nombre)
                 lbl_ciudad_empresa_detalle.setText(empresad?.ciudad)
-                /*
+
                 lbl_ciudad_provincia_detalle.setText(empresad?.provincia)
                 lbl_ciudad_telf_detalle.setText(empresad?.telf)
-                */
-                lbl_ciudad_provincia_detalle.setText(empresad?.latitud.toString())
-                lbl_ciudad_telf_detalle.setText(empresad?.longitud.toString())
+
                 lati=empresad?.latitud!!.toDouble()
                 longi=empresad?.longitud!!.toDouble()
                 //geoLoc=LatLng(empresad?.longitud!!.toDouble(),(empresad?.latitud!!.toDouble()))
@@ -120,7 +118,7 @@ class EmpresaDetalle : AppCompatActivity() ,OnMapReadyCallback
             try {
                 //Ponemos a "Dormir" el programa durante los ms que queremos
                 Log.e("hola", lati.toString())
-                Thread.sleep((5 * 1000).toLong())
+                //Thread.sleep((5 * 1000).toLong())
                 latLng=LatLng(lati,longi)
                 Log.e("hola", lati.toString())
             } catch (e: Exception) {

@@ -26,7 +26,6 @@ class MenuPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         database = FirebaseDatabase.getInstance()
         setContentView(R.layout.activity_menu_principal)
-
         //declaramos los botones, por hacer algo
         var btn_pincCiudades = findViewById<Button>(R.id.btn_empresas_prin)
         var btn_radar= findViewById<Button>(R.id.btn_radar_prin)
@@ -62,29 +61,22 @@ class MenuPrincipal : AppCompatActivity() {
 
     private fun rellenarUsuario()
     {
+        val keyUid = FirebaseAuth.getInstance().currentUser!!.uid
+        val refMaestra = FirebaseDatabase.getInstance().reference
+        val refUid =  refMaestra.child("Usuario").child(keyUid)
 
-        val myRef = database.getReference("usuario").child(lUid)
-        myRef.addValueEventListener(object : ValueEventListener {
+        val valueEventListener = object  :ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(Users::class.java)
-                Log.d("TAG", "Value is: $value")
-                if (value != null) {
-                    userName.text=value.nombre.toString()
-                    princNombreUser.text= "hola "+userName
-                }
-                else
-                {
-                    princNombreUser.text="¿Quién eres y qué haces aquí?"
-                }
-            }
+                val user = dataSnapshot.getValue(Users::class.java)
+                //Log.e("hola", "hola soy...." + user!!.nombre)
+                userName.text="Hola, "+ user!!.nombre
 
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w("TAG", "Failed to read value.", error.toException())
             }
-        })
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        }
+        refUid.addListenerForSingleValueEvent(valueEventListener)
 
     }
 }

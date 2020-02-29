@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white"
+
+    android:weightSum="5"
+    tools:context=".Registro">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:padding="50dp"
+        app:srcCompat="@drawable/logobase" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewNombreReg"
+            style="@style/diagonalStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/background"
+            android:gravity="center_vertical"
+            android:text="Nombre"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/reg_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <TextView
+            android:id="@+id/textViewApellidoReg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Apellido"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/reg_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <TextView
+            android:id="@+id/textViewProvinciaReg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Provincia"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/regProv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/textViewMailReg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Contraseña"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/reg_email"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <TextView
+            android:id="@+id/textPassReg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Repetir contraseña"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/reg_pass"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnRegistro2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimario1"
+                android:gravity="center_vertical"
+                android:text="Cancelar"
+                android:textAlignment="center"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+            <Button
+                android:id="@+id/btnRegistro"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimario1"
+                android:gravity="center_vertical"
+                android:text="Registrar"
+                android:textAlignment="center"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

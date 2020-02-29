@@ -47,6 +47,12 @@ class Registro : AppCompatActivity()
         btnRegistro.setOnClickListener{
             registrar()
         }
+        val btnCancelar = findViewById<View>(R.id.btnRegistro2) as Button
+        btnCancelar.setOnClickListener {
+            val intent:Intent= Intent(this, Login::class.java)
+            startActivity(intent)//lanzamos el intent
+            finish()
+        }
     }
     private fun registrar()
     {
@@ -55,9 +61,6 @@ class Registro : AppCompatActivity()
         val txtpass = findViewById<EditText>(R.id.reg_pass)
         val txtnom = findViewById<EditText>(R.id.reg_nombre)
         var txtape = findViewById<EditText>(R.id.reg_apellido)
-        //val txtprov = regProv.selectedItem.toString()//procisional
-        val txtprov = provincia//por ahora somos todos de Cáceres
-        //guardamos el contenido dentro de variables en el momento de pulsar el botón
         var mail = txtmail.text.toString()
         var pass = txtpass.text.toString()
         var nomb = txtnom.text.toString()

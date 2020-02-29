@@ -5,90 +5,111 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white"
     android:paddingTop="10dp"
-    android:paddingBottom="25dp">
+    android:paddingBottom="10dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardEmpresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:paddingTop="10dp"
 
+        android:paddingTop="10dp"
         android:paddingBottom="20dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp"
         app:cardPreventCornerOverlap="true">
 
+        <ImageView
+            android:id="@+id/logoEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:scaleType="fitStart"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="10">
-
-
-            <TextView
-                android:id="@+id/nom_empresa"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4"
-                android:background="@color/colorPrimario1"
-                android:gravity="center_vertical"
-                android:text="Nombre"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimario2"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/ciudad_empresa"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:paddingLeft="20dp"
-                android:text="Cuidad"
-                android:textColor="@color/colorPrimario1"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/provincia_empresa"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:paddingLeft="20dp"
-                android:text="Provincia"
-                android:textColor="@color/colorPrimario1"
-                android:textSize="18sp" />
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="10">
+
 
                 <TextView
-                    android:id="@+id/num_telf_empresa"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/nom_empresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical"
+                    android:text="Nombre"
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ciudad_empresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:text="Número de salas"
-                    android:textColor="@color/colorPrimario1"
+                    android:paddingLeft="20dp"
+                    android:text="Cuidad"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/num_uid"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="x"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textSize="18sp"
-                    tools:visibility="invisible" />
+                    android:id="@+id/provincia_empresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="20dp"
+                    android:text="Provincia"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/num_uid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="x"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default"
+                        android:textSize="18sp"
+                        tools:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/num_telf_empresa"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Número de telefono"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
             </LinearLayout>
-
-
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 

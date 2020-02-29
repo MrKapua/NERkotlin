@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
+    android:layout_height="match_parent"
     tools:context=".Usuario">
 
     <LinearLayout
@@ -54,6 +54,7 @@
                 android:layout_weight="1"
                 android:gravity="center|right|left"
                 android:text="Nombre"
+                android:textAlignment="center"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -85,6 +86,7 @@
                 android:layout_weight="1"
                 android:gravity="center|right|left"
                 android:text="Apellido"
+                android:textAlignment="center"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -116,6 +118,7 @@
                 android:layout_weight="1"
                 android:gravity="center|right|left"
                 android:text="Provincia"
+                android:textAlignment="center"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -148,6 +151,7 @@
                 android:layout_weight="1"
                 android:gravity="center|right|left"
                 android:text="eMail"
+                android:textAlignment="center"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -177,16 +181,15 @@
 
 
             <Button
-                android:id="@+id/btn_modificar_usu"
+                android:id="@+id/btn_cerrar_usu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/boton_redondeado"
-                android:text="Modificar"
+                android:text="Cerrar Sesión"
                 android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="18sp" />
-
         </LinearLayout>
 
     </LinearLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MenuPrincipal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:weightSum="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logobase" />
+
+            <TextView
+                android:id="@+id/princNombreUser"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Hola"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimario1"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_empresas_prin"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/boton_redondeado"
+                    android:gravity="bottom|left"
+                    android:paddingLeft="10dp"
+                    android:text="Principales Ciudades"
+                    android:textColor="@color/colorPrimario2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_usuario_prin"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/boton_redondeado"
+                    android:gravity="bottom|left"
+                    android:padding="15dp"
+                    android:text="Usuario"
+                    android:textColor="@color/colorPrimario2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_radar_prin"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/boton_redondeado"
+                    android:gravity="bottom|left"
+                    android:padding="15dp"
+                    android:text="@string/title_radar"
+                    android:textColor="@color/colorPrimario2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_buscar_prin"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/boton_redondeado"
+                    android:gravity="bottom|left"
+                    android:padding="15dp"
+                    android:text="Buscar"
+                    android:textColor="@color/colorPrimario2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

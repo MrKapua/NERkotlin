@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(salto)
         }
         boton2.setOnClickListener {
-            val saltoEmpresas = Intent(this, Radar::class.java)
+            val saltoEmpresas = Intent(this, pruebas::class.java)
             startActivity(saltoEmpresas)
         }
     }

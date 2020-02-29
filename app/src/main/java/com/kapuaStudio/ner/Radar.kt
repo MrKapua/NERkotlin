@@ -33,10 +33,12 @@ class Radar : AppCompatActivity() {
 
         btnBuscar.setOnClickListener {
             val intent = Intent(this, EmpresasActivity::class.java)
-            intent.putExtra("tipo", 3)
-            intent.putExtra("distancia", 50)
+            val distancialbl = lbl_pos.text
+            intent.putExtra("tipo", 4)
+            intent.putExtra("distancia", 5)
             intent.putExtra("lat", lat)
             intent.putExtra("long", long)
+            intent.putExtra("nombre", "")
             startActivity(intent)
         }
         checkLocation()
@@ -67,8 +69,8 @@ class Radar : AppCompatActivity() {
     private fun getLocationUpdates() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         locationRequest = LocationRequest()
-        locationRequest.interval = 50000
-        locationRequest.fastestInterval = 50000
+        locationRequest.interval = 500
+        locationRequest.fastestInterval = 500
         locationRequest.smallestDisplacement = 170f //170 m = 0.1 mile
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY //according to your app
         locationCallback = object : LocationCallback() {
@@ -84,7 +86,7 @@ class Radar : AppCompatActivity() {
                         locationResult.lastLocation.longitude,
                         1
                     )
-                    lbl_pos.text=locationResult.lastLocation.latitude.toString() +" - " + locationResult.lastLocation.longitude.toString()
+                    //lbl_pos.text=locationResult.lastLocation.latitude.toString() +" - " + locationResult.lastLocation.longitude.toString()
                     lat=locationResult.lastLocation.latitude.toLong()
                     long=locationResult.lastLocation.latitude.toLong()
                 }
